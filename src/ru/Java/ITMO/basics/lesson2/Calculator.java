@@ -13,11 +13,11 @@ public class Calculator {
     public static double division(double a, double b) {
         return a / b;
     }
-    public static long division(long a, long b) {
-        return a % b;
+    public static double division(long a, long b) {
+        return (double) a / b;
     }
-    public static int division(int a, int b) {
-        return a % b;
+    public static double division(int a, int b) {
+        return (double) a / b;
     }
 
     public static double multiplication(double a, double b) {
@@ -53,14 +53,14 @@ public class Calculator {
         long aLong = 5L;
         long bLong = 3L;
         long sumLong = Calculator.sum(aLong, bLong);
-        long divisionLong = Calculator.division(aLong, bLong);
+        double divisionLong = Calculator.division(aLong, bLong);
         long multiplicationLong = Calculator.multiplication(aLong, bLong);
         long subtractionLong = Calculator.subtraction(aLong, bLong);
 
         int aInt = 10;
         int bInt = 4;
         int sumInt = Calculator.sum(aInt, bInt);
-        int divisionInt = Calculator.division(aInt, bInt);
+        double divisionInt = Calculator.division(aInt, bInt);
         int multiplicationInt = Calculator.multiplication(aInt, bInt);
         int subtractionInt = Calculator.subtraction(aInt, bInt);
 
