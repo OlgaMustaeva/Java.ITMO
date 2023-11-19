@@ -3,21 +3,34 @@ import java.io.*;
 public class Replacement {
     public static void main(String[] args) {
         String filePath = "files/replacement.txt";
+        BufferedReader reader = null;
+        BufferedWriter writer = null;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            reader = new BufferedReader(new FileReader(filePath));
             StringBuilder content = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
-            reader.close();
             String replacedContent = content.toString().replaceAll("[^A-Za-zА-Яа-я0-9]", "\\$");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+
+            writer = new BufferedWriter(new FileWriter(filePath));
             writer.write(replacedContent);
-            writer.close();
+
             System.out.println("Файл успешно обработан.");
         } catch (IOException e) {
             System.out.println("Ошибка при обработке файла: " + e.getMessage());
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Ошибка при закрытии потоков: " + e.getMessage());
+            }
         }
     }
 }
